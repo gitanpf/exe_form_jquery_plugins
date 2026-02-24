@@ -9,52 +9,45 @@ $(document).ready(function() {
         cssEase: 'linear'
     });
 
-    $('.menu-hamburger').click(function(){
-        $('nav').slideToggle();
-    });
-
-    $('#nomeCompleto').attr('placeholder', 'Nome completo aqui.')
+    $('#nome').attr('placeholder', 'Nome completo aqui.')
 
     $('#email').attr('placeholder', 'seuemail@email.com')
 
-    $('#tel').mask('(00) 00000-0000', {
+    $('#telefone').mask('(00) 00000-0000', {
         placeholder: '(00) 00000-0000'
     });
 
-    $('#veiculoInte').attr('placeholder', 'Modelo XYZ')
+    $('#cpf').mask('000.000.000-00', {
+        placeholder: '000.000.000-00'
+    });
 
-    $('#msg').attr('placeholder', 'Digite aqui sua mensagem e em breve entraremos em contato.')
+    $('#endereco').attr('placeholder', 'Rua João Pedro, 38, Paraíso - São Paulo')
 
 
-    $('#form-contato').validate({
+    $('#cep').mask('00000-000', {
+        placeholder: '00000-000'
+    });
+
+    $('#form').validate({
         rules: {
-            nomeCompleto: { required: true },
+            nome: { required: true },
             email: { required: true, email: true },
-            telefoneComDDD: { required: true },
-            CampoMensagem: { required: true },
-            modeloVeiculo: { required: true }
+            telefone: { required: true },
+            cpf: { required: true },
+            endereco: { required: true },
+            cep: { required: true }
         },
         messages: {
-            nomeCompleto: 'Por favor, insira o seu nome.',
+            nome: 'Por favor, insira o seu nome.',
             email: 'Por favor, preencha o campo e-mail.',
-            telefoneComDDD: 'Insira o seu telefone completo.',
-            CampoMensagem: 'Por favor, insira uma mensagem.',
-            modeloVeiculo: 'Digite aqui o modelo desejado.'
+            telefone: 'Por favor, insira o seu telefone completo.',
+            cpf: 'Por favor, insira o seu CPF.',
+            endereco: 'Por favor, digite aqui o seu endereço completo.',
+            cep: 'Por favor, digite o seu CEP.'
         },
         submitHandler: function(form) {
             console.log("Formulário enviado com sucesso!");
             form.submit();
         }
-    });
-
-    $('.container-lista button').click(function(){
-        const destino = $('#contact');
-        const nomeVeiculo = $(this).parent().find('h3').text();
-
-        $('#veiculoInte').val(nomeVeiculo);
-
-        $('html, body').animate({ 
-            scrollTop: destino.offset().top
-        }, 1000);
     });
 });
